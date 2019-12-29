@@ -1,3 +1,4 @@
+//A function that compare to arrays values and keeps a track of scores when one value is larger than another.
 function compareTriplets(a, b) {
     //track scores with a counter for each team
     let team1 = 0

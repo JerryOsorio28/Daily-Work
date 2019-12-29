@@ -1,3 +1,5 @@
+//A function that sums all the values from top-left to bottom-right, and from top-right to bottom-left
+//and returns the number difference between them by substracting both values
 function diagonalDifference(arr) {
     //keeps a track of arrays length
     let arr_length = arr[0].length;
