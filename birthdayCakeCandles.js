@@ -7,7 +7,6 @@
 function birthdayCakeCandles(ar) {
     //we need to grab the max value of the array
     let max_value = Math.max(...ar)
-    console.log('max_value', max_value)
     //we can set a counter starting at 1
     let counter = 0
     //we need to iterate over the array to reach values
