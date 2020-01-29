@@ -11,11 +11,11 @@ function sockMerchant(n, ar) {
     let counter = 0;
     //iterate over arr
     for(let i = 0; i < n - 1; i++){
-    //check if arr[i] === arr[j], if it is increase counter
+    //check if the current index value is equal to the next,if it is increase counter
       if(sorted[i] === sorted[i + 1]){
         //increase counter
         counter++;
-        //since the next index have been checked, we move on to the nex index
+        //since the next index have been checked, we move on to the next index
         i++;
       }
     }
