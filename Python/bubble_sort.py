@@ -13,6 +13,7 @@ def bubble_sort(arr):
             if arr[j] > arr[j + 1]:
                 # we swap places...
                 arr[j], arr[j+1] = arr[j+1], arr[j]
+    print(arr)            
     return arr
 
 bubble_sort(arr)
