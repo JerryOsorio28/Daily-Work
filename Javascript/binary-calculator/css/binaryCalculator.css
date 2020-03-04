@@ -1,0 +1,43 @@
+body{
+    width: 33%
+}
+
+#res {
+    background-color: lightgray;
+    border: solid;
+    height: 48px;
+    font-size: 25x;
+}
+
+#btn0, #btn1 {
+    width: 25%;
+    height: 36px;
+    font-size: 18px;
+    margin: 0px;
+    float: left;
+    background-color: lightgreen;
+    color: brown;
+}
+
+#btnClr, #btnEql {
+    width: 25%;
+    height: 36px;
+    font-size: 18px;
+    margin: 0px;
+    float: left;
+    background-color: darkgreen;
+    color: white;
+}
+
+#btnSum, #btnSub, #btnMul, #btnDiv {
+    width: 25%;
+    height: 36px;
+    font-size: 18px;
+    margin: 0px;
+    float: left;
+    background-color: black;
+    color: red;
+}
+
+
+
