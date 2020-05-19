@@ -1,20 +1,18 @@
+// Complete the saveThePrisoner function below.
 function saveThePrisoner(n, m, s) {
-    // we can have a loop that would increase the starting posistion 's' up until it reaches the capacity of prisoners, the length of the loop will be the amount of candies available to distribute.
-    let seat = s
-    for(let i = 1; i < m; i++){
-    // we check if the starting position counter is at prisoners capacity, if it is, we reset the counter to one, otherwise, we increase the counter by 1.
-        if (seat == s - 1){
-          let result = (m - i) / n
-            if(result >= 2){
-                i *= result
-            }
-        } 
-        if(seat == n){
-            seat = 1
-        } else {
-            seat++
-        }
-    }
-    // lastly, once the candies are properly distribute, which is when the for loop is done, we return the counter
-    return seat
+  // we can do this in constant time O(1) by simply doing some math. The first thing we need to determine is how many times we can go around the table, we can do this by diving
+  // the total amount of candies by the amount of prisoners, and round it down to the nearest integer. 
+  let rounds = Math.floor(m / n)
+  // Then, we can determine the remaining amount of candies after completing the rounds by first multiplying the rounds we can do times the number of prisoners, minus the total amount
+  // of candies.
+  let candiesRemaining = m - rounds * n
+  // Lastly, we can determine which seat was the one who grabbed the awful last candy by summing the starting point plus the amount of candy remaining, minus 1 since we count the
+  // the starting point seat.
+  let finalResult = s + candiesRemaining - 1 
+  // before we return the final result, we need to check if it is greater than the amount of prisoners, if it is, it means we completed another round, so we subtract the number of prisoners
+  if(finalResult > n){
+      finalResult -= n
+  }
+
+  return finalResult
 }
