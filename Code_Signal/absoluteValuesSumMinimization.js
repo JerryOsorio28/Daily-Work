@@ -19,7 +19,6 @@ function absoluteValuesSumMinimization(a) {
   for(let i = 0; i < a.length - 1; i++){
       initialAbs += Math.abs(a[i] - a[i+1])
   }
-  console.log(initialAbs)
   let min = [];
   // then we would need to reiterate over the array and, subtract the current value in the iteration with the next one to it.
   for(let i = 0; i < a.length; i++){
@@ -28,6 +27,8 @@ function absoluteValuesSumMinimization(a) {
           let result = Math.abs(a[i] - a[j])
           value += result
       }
+      // once we determine the absolute value of the substractions of the current number in the iteration with the rest, we store it in an array, storing on index 0 the current value on the iteration,
+      // and on index 1 storing the substraction of the absolute value and the initial's arr absolute value.
       if(min.length <= 0){
           min[0] = a[i]
           min[1] = Math.abs(value - initialAbs)
@@ -35,9 +36,11 @@ function absoluteValuesSumMinimization(a) {
           min[0] = a[i]
           min[1] = Math.abs(value - initialAbs)
       }
-      console.log(min)
   }
-  // Once we make the substraction, we subtract the result with the initial array result and store it in a variable that will keep a track of the element with the smallest value, with this everytime we iterate we can check if the substraction result with the initial array is the closest one.
+  
+  return min[0]
 }
 absoluteValuesSumMinimization([2,4,7])
+
+
 
