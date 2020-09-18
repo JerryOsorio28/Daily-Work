@@ -3,29 +3,30 @@
 // Sequence containing only one element is also considered to be strictly increasing.
 
 function almostIncreasingSequence(sequence) {
-  // we can iterate over the sequence, and as we iterate, we can automatically remove the current index, 
-  // and check if there is a constant sequence, if there is, return true, if not, we move to the next index,
-  // remove the number and check again. If the loop is done and it does not return, we then return false.
+  // we might need a variable, a boolean that keeps a track of wether we already removed an element or not.
+  let removedNum = false
   let sequenceCopy = [...sequence]
-  let count = 0
-  let bool = true
-  
-  while(count <= sequence.length){
-    for(let i = 0; i < sequenceCopy.length; i++){
-        if(sequenceCopy[i] >= sequenceCopy[i+1]){
-            sequenceCopy = [...sequence]
-            sequenceCopy.splice(count, 1)
-            bool = false
-            break
-        } else {
-            bool = true
-        }
-    }
-    if(bool === true){
-        return true
-    } else {
-        count++
-    }
+  // we need to iterate over the arr
+  for(let i = 0; i < sequenceCopy.length; i++){
+  // as we iterate we can compare the current element in the iteration with the next one to the right..
+  // if the next one on the right is greater, we continue our iteration.. if it is not greater, we remove the next element and,
+  // we check if the next one after is greater than the current, if it is, we continue, if it is not we return false.
+      if(sequenceCopy[i] >= sequenceCopy[i+1]){
+          if(removedNum === false){
+              if(i == 0){
+                  sequenceCopy.splice(i, 1)
+              } else if(sequenceCopy[i+1] > sequenceCopy[i-1]){
+                  sequenceCopy.splice(i, 1)
+              } else {
+                  sequenceCopy.splice(i+1, 1)
+              }
+              i--
+              removedNum = true
+          } else {
+              return false
+          }
+      }
   }
-  return false
+  // if nothing returns from loop, we return true
+  return true
 }
