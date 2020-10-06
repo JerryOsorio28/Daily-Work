@@ -18,17 +18,30 @@
 // Thus, only 2 candidates can win (the second and the third), which is the answer.
 
 function electionsWinners(votes, k) {
-  // first we can grab the element with the highest value in the arr
-  let max = Math.max(...votes)
-  // var that counts the potential candidates that can win
-  let potentialWinners = 0
-  // loop to iterate over the arr..
-  for(let candidate in votes){
-      // we sum the current element with k and check if the sum is greater than the max value..
-      if(votes[candidate] + k > max){
-          // we found a candidate that can potentially win, so we increase the count by 1.
-          potentialWinners++
-      }
-  }
-  return potentialWinners
+    // first we can grab the element with the highest value in the arr
+    let max = Math.max(...votes)
+    // variable that keeps a track  of wether the max value is repeated
+    let maxSeen = false
+    // we remove from the arr the max value
+    votes.splice(votes.indexOf(max), 1)
+    // var that counts the potential candidates that can win, initialized to 1 since at least one can win if no tie.
+    let potentialWinners = 1
+    
+    // loop to iterate over the arr..
+    for(let candidate in votes){
+        // we check if we see another max value in the arr
+        if(k === 0 && votes[candidate] === max){
+            maxSeen = true
+        }
+        // we check if there is another max value on the arr, because if it is, and there is not votes remaining, it's a tie so we return 0.
+        if(maxSeen === true && k === 0){
+            return 0
+        }
+        // we sum the current element with k and check if the sum is greater than the max value..
+        if(votes[candidate] + k > max){
+            // we found a candidate that can potentially win, so we increase the count by 1.
+            potentialWinners++
+        }
+    }
+    return potentialWinners
 }
