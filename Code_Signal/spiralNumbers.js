@@ -7,7 +7,6 @@
 //                                  [7, 6, 5]]
 
 function spiralNumbers(n) {
-  console.log('                                      ')
   // we need to make our matrix, we can initialize the values within it with 0's.
   let matrix = []
 
@@ -17,30 +16,33 @@ function spiralNumbers(n) {
   let i = 0
   let j = 0
   let counter = 1
-  let middle = Math.floor(n / 2)
   // we would need to iterate over the matrix, we need 2 iterators
   while(true){
-    // as we iterate, we want to check if we can move to the next position in the iteration
+    // as we iterate, we set the value of our initial position...
     matrix[i][j] = counter
 
+    // then we want to check if we can move to the next position in the iteration
     if(matrix[i][j+1] == 0){
-      j++
-    } else if (matrix[i+1][j] == 0){
+      if(i != 0 && matrix[i-1][j] == 0){
+        i--
+      } else {
+        j++
+      }
+    } else if (i != n - 1 && matrix[i+1][j] == 0){
       i++
     } else if(matrix[i][j-1] == 0){
       j--
     } else if(matrix[i-1][j] == 0){
       i--
+    } else {
+      break
     }
-    if(j + 1 != 0 && i - 1 != 0)
-
     counter++
   }
-  console.log(matrix)
+  return matrix
 }
-spiralNumbers(3)
 
-// function to create matrix
+// helper function to create matrix
 function buildMatrix(n, matrix){
   let subArr = []
 
@@ -52,3 +54,4 @@ function buildMatrix(n, matrix){
     subArr = []
   }
 }
+
